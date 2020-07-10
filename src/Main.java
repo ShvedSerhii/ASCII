@@ -5,17 +5,9 @@ public class Main {
 
     public static void main(String[] args) {
         int[] inputValue = input();
-        int[] evenValues = Arrays.stream(inputValue)
-                .distinct()
-                .filter(n -> n % 2 == 0)
-                .filter(n -> n <= 127)
-                .toArray();
-        int[] oddValues = Arrays.stream(inputValue)
-                .distinct()
-                .filter(n -> n % 2 != 0)
-                .filter(n -> n <= 127)
-                .toArray();
-	    showResult(evenValues, oddValues);
+        int[] evenValues = filterEvenValues(inputValue);
+        int[] oddValues = filterOddValues(inputValue);
+        showResult(evenValues, oddValues);
     }
 
     private static int[] input() {
@@ -25,6 +17,22 @@ public class Main {
         int[] result = new int[charArray.length];
         Arrays.setAll(result, i -> (int)charArray[i]);
         return result;
+    }
+
+    private static int[] filterEvenValues(int[] inputValue) {
+        return Arrays.stream(inputValue)
+                .distinct()
+                .filter(n -> n % 2 == 0)
+                .filter(n -> n <= 127)
+                .toArray();
+    }
+
+    private static int[] filterOddValues(int[] inputValue) {
+        return Arrays.stream(inputValue)
+                .distinct()
+                .filter(n -> n % 2 != 0)
+                .filter(n -> n <= 127)
+                .toArray();
     }
 
     private static void showResult(int[] evenValues, int[] oddValues) {
