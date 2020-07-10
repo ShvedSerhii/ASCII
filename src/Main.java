@@ -4,8 +4,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-	    int[] inputValue = input();
-	    int[] evenValues = Arrays.stream(inputValue)
+        int[] inputValue = input();
+        int[] evenValues = Arrays.stream(inputValue)
                 .distinct()
                 .filter(n -> n % 2 == 0)
                 .filter(n -> n <= 127)
